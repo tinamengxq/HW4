@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]private int playerSpeed = 3;
+    [SerializeField]private Rigidbody2D _rigidbody;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            _rigidbody.velocity = Vector2.up * playerSpeed;
         }
     }
 }
