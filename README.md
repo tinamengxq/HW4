@@ -14,7 +14,9 @@ I still believe that my Player.cs represents the control pattern. And in my UI.c
     public delegate void Jumped();
     public event Jumped playerJumped;
 ```
-    This event links jump to audio. When the player hits space, playerJumped is fired.
+
+This event links jump to audio. When the player hits space, playerJumped is fired.
+
 ```
     void Jump()
     {
@@ -27,8 +29,7 @@ I still believe that my Player.cs represents the control pattern. And in my UI.c
     public delegate void Scored();
     public event Scored playerScored;
 ```
-```
-    This event links score to audio and UI. By OnTriggerEnter2D, the controller decide whether the player scored or not. If this is scored, playerScored is fired. Then the "View" is informed in UI. In UI, I subscribed a method of AddPoint() to playerScored to change the view on screen. I used singleton in Locator.cs to enable other methods to be subscribed to events in player wherever I want. I also used singleton in UI.cs to make sure there is only one UI in the screen.
+This event links score to audio and UI. By OnTriggerEnter2D, the controller decide whether the player scored or not. If this is scored, playerScored is fired. Then the "View" is informed in UI. In UI, I subscribed a method of AddPoint() to playerScored to change the view on screen. I used singleton in Locator.cs to enable other methods to be subscribed to events in player wherever I want. I also used singleton in UI.cs to make sure there is only one UI in the screen.
 ```
     //Player.cs
     void OnTriggerEnter2D(Collider2D other)
@@ -54,12 +55,11 @@ I still believe that my Player.cs represents the control pattern. And in my UI.c
     }
 ```
 ```
-```
     //"Die" - UI
     public delegate void Died();
     public event Died playerDied;
 ```
-    This event links die to audio, UI and pipe. By OnCollisionEnter2D, the controller decide whether the player died or not. If player died, playerDied is fired. I subscribed a method of GameOver() in UI. Once playerDied is fired, the counting of scores stops and final score is shown in the middle of the screen. I also subscribed a method of PipeDie() in Pipe.cs. The script of pipe is destroyed after the player died. This stops the game immediately. 
+This event links die to audio, UI and pipe. By OnCollisionEnter2D, the controller decide whether the player died or not. If player died, playerDied is fired. I subscribed a method of GameOver() in UI. Once playerDied is fired, the counting of scores stops and final score is shown in the middle of the screen. I also subscribed a method of PipeDie() in Pipe.cs. The script of pipe is destroyed after the player died. This stops the game immediately. 
 ```
     //Player.cs
     void OnCollisionEnter2D(Collision2D collision)
